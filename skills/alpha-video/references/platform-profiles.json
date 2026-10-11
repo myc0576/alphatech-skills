@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-09-08",
+  "profiles": {
+    "generic": {
+      "id": "generic",
+      "display_name": "通用视频模型",
+      "verified_at": "2026-08-25",
+      "aliases": ["generic", "通用", "通用版", "unknown"],
+      "evidence_status": "fallback",
+      "sources": [],
+      "capabilities": {
+        "min_duration_sec": null,
+        "max_duration_sec": null,
+        "supported_aspect_ratios": null,
+        "input_modalities": ["text"],
+        "max_images": null,
+        "max_videos": null,
+        "max_audios": null,
+        "supports_native_audio": null,
+        "supports_multi_shot": null,
+        "supports_extension": null,
+        "supports_timestamp_editing": null,
+        "supports_first_last_frame": null,
+        "supports_negative_prompt": null
+      },
+      "compiler_policy": {
+        "policy_origin": "skill_design",
+        "prompt_style": "compact_natural_language",
+        "max_active_subjects_per_beat": 2,
+        "max_micro_actions_per_beat": 4,
+        "max_camera_operators_per_beat": 1,
+        "max_vfx_systems_per_beat": 2,
+        "recommended_segment_sec": 5,
+        "split_when_overloaded": true,
+        "downgrade_order": ["decorations", "background_events", "parallel_vfx", "camera_complexity", "split_at_action_transition"]
+      },
+      "evidence_notes": "平台未知；只使用保守编译策略，不推断负面词栏、参考容量或首尾帧能力。"
+    },
+    "seedance-2.0": {
+      "id": "seedance-2.0",
+      "display_name": "Seedance 2.0",
+      "verified_at": "2026-08-25",
+      "aliases": ["seedance 2.0", "seedance2.0", "seedance-2.0", "seedance 2", "即梦 seedance 2.0"],
+      "evidence_status": "official",
+      "sources": ["https://seed.bytedance.com/en/blog/seedance-2-0-%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83"],
+      "capabilities": {
+        "min_duration_sec": null,
+        "max_duration_sec": 15,
+        "supported_aspect_ratios": null,
+        "input_modalities": ["text", "image", "video", "audio"],
+        "max_images": 9,
+        "max_videos": 3,
+        "max_audios": 3,
+        "supports_native_audio": true,
+        "supports_multi_shot": true,
+        "supports_extension": true,
+        "supports_timestamp_editing": null,
+        "supports_first_last_frame": null,
+        "supports_negative_prompt": null
+      },
+      "compiler_policy": {
+        "policy_origin": "skill_design",
+        "prompt_style": "multishot_natural_language",
+        "max_active_subjects_per_beat": 2,
+        "max_micro_actions_per_beat": 4,
+        "max_camera_operators_per_beat": 1,
+        "max_vfx_systems_per_beat": 2,
+        "recommended_segment_sec": 5,
+        "split_when_overloaded": true,
+        "downgrade_order": ["decorations", "background_events", "parallel_vfx", "camera_complexity", "split_at_action_transition"]
+      },
+      "evidence_notes": "官方确认15秒多镜音视频与多模态参考；编译预算为 Skill 保守策略，不是官方限制。"
+    },
+    "seedance-2.5": {
+      "id": "seedance-2.5",
+      "display_name": "Seedance 2.5",
+      "verified_at": "2026-09-08",
+      "aliases": ["seedance 2.5", "seedance2.5", "seedance-2.5", "即梦 seedance 2.5"],
+      "evidence_status": "official",
+      "sources": [
+        "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5",
+        "https://docs.byteplus.com/en/docs/ModelArk/2607689",
+        "https://dreamina.capcut.com/seedance/seedance-2-5-prompt"
+      ],
+      "capabilities": {
+        "min_duration_sec": null,
+        "max_duration_sec": 30,
+        "supported_aspect_ratios": null,
+        "input_modalities": ["text", "image", "video", "audio"],
+        "max_images": 30,
+        "max_videos": 10,
+        "max_audios": 10,
+        "supports_native_audio": true,
+        "supports_multi_shot": true,
+        "supports_extension": true,
+        "supports_timestamp_editing": true,
+        "supports_first_last_frame": null,
+        "supports_negative_prompt": null
+      },
+      "compiler_policy": {
+        "policy_origin": "skill_design",
+        "prompt_style": "longform_multishot_natural_language",
+        "max_active_subjects_per_beat": 3,
+        "max_micro_actions_per_beat": 4,
+        "max_camera_operators_per_beat": 1,
+        "max_vfx_systems_per_beat": 2,
+        "recommended_segment_sec": 10,
+        "recommended_segment_count": "4-6",
+        "reference_role_manifest_required": true,
+        "timestamp_timeline_required": true,
+        "one_camera_operator_per_segment": true,
+        "same_entity_reference_grouping": true,
+        "local_edit_preserve_unmodified_ranges": true,
+        "split_when_overloaded": true,
+        "downgrade_order": ["decorations", "background_events", "parallel_vfx", "camera_complexity", "split_at_action_transition"]
+      },
+      "evidence_notes": "官方资料确认最长30秒、多轮延长、图片/视频/音频参考、跨镜连续与时间戳编辑方向；BytePlus API 字段以当前官方文档为准。参考职责、累计时间轴和单段单主运镜是 Skill 编译策略，不是官方硬限制。"
+    },
+    "happyhorse-1.0": {
+      "id": "happyhorse-1.0",
+      "display_name": "HappyHorse 1.0",
+      "verified_at": "2026-08-25",
+      "aliases": ["happyhorse", "happy horse", "happyhorse 1.0", "happyhorse1.0", "happyhorse-1.0"],
+      "evidence_status": "documented",
+      "sources": ["https://happy-horse.ai/docs"],
+      "capabilities": {
+        "min_duration_sec": 4,
+        "max_duration_sec": 15,
+        "supported_aspect_ratios": null,
+        "input_modalities": ["text", "image"],
+        "max_images": 9,
+        "max_videos": 0,
+        "max_audios": 0,
+        "max_mixed_files": 9,
+        "supports_native_audio": true,
+        "supports_multi_shot": null,
+        "supports_extension": null,
+        "supports_timestamp_editing": null,
+        "supports_first_last_frame": null,
+        "supports_negative_prompt": null,
+        "workflows": {
+          "text": {"exact_images": 0, "exact_videos": 0, "exact_audios": 0},
+          "image": {"min_images": 1, "max_images": 9, "exact_videos": 0, "exact_audios": 0}
+        }
+      },
+      "documented_but_not_enabled": {
+        "input_modalities": ["video", "audio"],
+        "max_videos": 3,
+        "max_audios": 3,
+        "mixed_file_limit": 12,
+        "reason": "模型介绍列出完整多模态能力，但当前网页端公开入口仅确认T2V/I2V；编译器不消费本块。"
+      },
+      "compiler_policy": {
+        "policy_origin": "skill_design",
+        "prompt_style": "short_compact_natural_language",
+        "max_active_subjects_per_beat": 2,
+        "max_micro_actions_per_beat": 3,
+        "max_camera_operators_per_beat": 1,
+        "max_vfx_systems_per_beat": 1,
+        "recommended_segment_sec": 5,
+        "split_when_overloaded": true,
+        "downgrade_order": ["decorations", "background_events", "parallel_vfx", "camera_complexity", "split_at_action_transition"]
+      },
+      "evidence_notes": "当前网页端公开T2V/I2V；完整多模态属于模型文档描述。未确认的入口能力保持未知。"
+    },
+    "minimax-h3": {
+      "id": "minimax-h3",
+      "display_name": "MiniMax H3",
+      "verified_at": "2026-08-25",
+      "aliases": ["minimax h3", "minimax-h3", "minimaxh3", "h3", "海螺 h3", "hailuo h3"],
+      "evidence_status": "official",
+      "sources": ["https://www.minimax.io/news/minimax-h3-open-source"],
+      "capabilities": {
+        "min_duration_sec": 4,
+        "max_duration_sec": 15,
+        "supported_aspect_ratios": null,
+        "documented_aspect_ratio_examples": ["21:9", "16:9", "4:3", "1:1", "3:4", "9:16"],
+        "input_modalities": ["text", "image", "video", "audio"],
+        "max_images": 9,
+        "max_videos": 3,
+        "max_audios": 3,
+        "max_mixed_files": 12,
+        "supports_native_audio": true,
+        "supports_multi_shot": true,
+        "supports_extension": null,
+        "supports_timestamp_editing": null,
+        "supports_first_last_frame": true,
+        "supports_negative_prompt": null,
+        "supports_context_ir": true,
+        "workflows": {
+          "text": {"exact_images": 0, "exact_videos": 0, "exact_audios": 0},
+          "first_frame": {"exact_images": 1, "exact_videos": 0, "exact_audios": 0},
+          "last_frame": {"exact_images": 1, "exact_videos": 0, "exact_audios": 0},
+          "first_last_frame": {"exact_images": 2, "exact_videos": 0, "exact_audios": 0},
+          "reference": {"max_images": 9, "max_videos": 3, "max_audios": 3, "max_mixed_files": 12}
+        }
+      },
+      "compiler_policy": {
+        "policy_origin": "skill_design",
+        "prompt_style": "structured_shots_with_context",
+        "max_active_subjects_per_beat": 2,
+        "max_micro_actions_per_beat": 4,
+        "max_camera_operators_per_beat": 1,
+        "max_vfx_systems_per_beat": 2,
+        "recommended_segment_sec": 5,
+        "split_when_overloaded": true,
+        "downgrade_order": ["decorations", "background_events", "parallel_vfx", "camera_complexity", "split_at_action_transition"]
+      },
+      "evidence_notes": "官方推荐复杂输入使用H3-Context-IR；开放Base与托管完整工作流必须区分。编译预算不是官方限制。"
+    }
+  }
+}
