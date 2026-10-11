@@ -2,7 +2,7 @@
 name: alpha-suno
 description: Generate songs, instrumentals, or lyrics through AlphaTech API's Suno-compatible route. Use for music creation, lyric generation, continuation, task polling, and result downloads.
 metadata:
-  version: 1.0.0
+  version: 1.2.0
 ---
 
 # Alpha Suno
